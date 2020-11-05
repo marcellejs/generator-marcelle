@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
   },
   plugins: ['svelte3'],
-  extends: ['airbnb-base'],
+  <% if (prettier) { %>extends: ['airbnb-base', 'prettier'],<% } else { %>extends: ['airbnb-base'],<% } %>
   overrides: [
     {
       files: ['**/*.svelte'],
