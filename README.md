@@ -1,4 +1,6 @@
-# generator-marcelle [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-marcelle
+
+[![NPM version][npm-image]][npm-url]
 
 > A Yeoman generator for Marcelle applications
 
@@ -11,10 +13,30 @@ npm install -g yo
 npm install -g generator-marcelle
 ```
 
-Then generate your new project:
+## Generating a Marcelle Application
+
+To generate a new project:
 
 ```bash
 yo marcelle
+```
+
+Several options are available to customize the project. If you don't know what to chose, just hit enter to select the defaults.
+
+## Generating a Module
+
+It is possible to use the generator to create new custom modules for an application or a marcelle package.
+
+```bash
+yo marcelle:module
+```
+
+Just enter your module's name (e.g. my-module) and the generator will create a template module that you can your in your script:
+
+```js
+import { myModule } from './modules/my-module';
+
+const m = myModule(opts);
 ```
 
 ## Getting To Know Yeoman
