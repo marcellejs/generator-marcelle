@@ -32,7 +32,7 @@ const eslintDevDependencies = (ts, prettier) =>
           '@typescript-eslint/eslint-plugin': '^4.6.0',
           'eslint-config-airbnb-typescript': '^12.0.0',
         }
-      : { 'eslint-config-airbnb-base': '^14.2.0' },
+      : { 'eslint-config-airbnb-base': '^14.2.0', 'eslint-config-prettier': '^6.15.0' },
     prettier
       ? {
           'eslint-config-prettier': '^6.15.0',

@@ -64,7 +64,6 @@ module.exports = class extends Generator {
 
   writing() {
     const { lang } = this.props;
-    console.log('this.props', this.props);
     this.fs.copyTpl(
       this.templatePath(`${lang}/index.${lang}`),
       this.destinationPath(`src/modules/${this.props.kebabName}/index.${lang}`),
