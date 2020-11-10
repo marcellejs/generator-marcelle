@@ -17,4 +17,7 @@ export default {
       pluginsOptions: {},
     }),
   ],
+  optimizeDeps: {
+    exclude: ['@marcellejs/backend'],
+  },
 };

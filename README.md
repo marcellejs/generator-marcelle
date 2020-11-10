@@ -39,6 +39,22 @@ import { myModule } from './modules/my-module';
 const m = myModule(opts);
 ```
 
+## Generating a Backend
+
+It is possible to use the generator to add server-side data storage (backend).
+
+```bash
+yo marcelle:backend
+```
+
+To run the server:
+
+```bash
+npm run backend
+```
+
+TODO: document configuration
+
 ## Getting To Know Yeoman
 
 - Yeoman has a heart of gold.

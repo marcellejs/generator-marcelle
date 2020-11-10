@@ -64,11 +64,20 @@ module.exports = class extends Generator {
         name: 'linting',
         type: 'checkbox',
         message: 'Linting and Formatting',
-        default: 'js',
         choices: [
           { name: 'ESLint (airbnb)', value: 'eslint', checked: true },
           { name: 'Prettier', value: 'prettier', checked: true },
           { name: 'None', value: 'none' },
+        ],
+      },
+      {
+        name: 'backend',
+        type: 'list',
+        message: 'Where do you want to store the data?',
+        default: 'browser',
+        choices: [
+          { name: 'In the browser (localStorage)', value: 'browser' },
+          { name: 'On the server', value: 'server' },
         ],
       },
     ];
@@ -76,11 +85,20 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = Object.assign({}, this.props, props);
+      this.pkg = makePkgConfig(this);
+
+      if (props.backend === 'server') {
+        this.composeWith(require.resolve('../backend'), {
+          pkg: this.pkg,
+          language: props.language,
+          isSub: true,
+          useYarn: this.props.packager === 'yarn',
+        });
+      }
     });
   }
 
   writing() {
-    this.pkg = makePkgConfig(this);
     const lang = this.props.language;
     const isTypeScript = lang === 'ts';
     const eslint = this.props.linting.includes('eslint');

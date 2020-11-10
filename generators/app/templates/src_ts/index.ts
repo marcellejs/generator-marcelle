@@ -46,7 +46,6 @@ const instances = input.$images
   }))
   .awaitPromises();
 
-// const backend = createBackend({ location: 'http://localhost:3030/', auth: true });
 const backend = createBackend({ location: 'localStorage' });
 const trainingSet = dataset({ name: 'TrainingSet', backend });
 trainingSet.capture(instances as Stream<Instance>);
@@ -108,7 +107,10 @@ dashboard
   .use([label, capture], trainingSetInfo, trainingSetBrowser);
 dashboard.page('Training').use(params, b, prog, plotTraining);
 dashboard.page('Batch Prediction').use(predictButton, confusionMatrix);
-dashboard.page('Real-time Prediction').useLeft(input).use(tog, plotResults);
+dashboard
+  .page('Real-time Prediction')
+  .useLeft(input)
+  .use(tog, plotResults);
 dashboard.settings.useLeft(account(backend)).use(trainingSet);
 
 dashboard.start();
