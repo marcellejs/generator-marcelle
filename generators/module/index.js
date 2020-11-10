@@ -77,5 +77,10 @@ module.exports = class extends Generator {
       this.destinationPath(`src/modules/${this.props.kebabName}/${this.props.kebabName}.svelte`),
       this.props,
     );
+    this.conflicter.force = true;
+    this.fs.append(
+      this.destinationPath(`src/modules/index.${lang}`),
+      `export * from './${this.props.kebabName}';\n`,
+    );
   }
 };

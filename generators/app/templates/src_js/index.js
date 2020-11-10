@@ -18,7 +18,7 @@ import {
   predictionPlot,
   account,
 } from '@marcellejs/core';
-import { datasetInfo } from './modules/dataset-info';
+import { datasetInfo } from './modules';
 
 // -----------------------------------------------------------
 // INPUT PIPELINE & DATA CAPTURE

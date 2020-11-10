@@ -1,6 +1,8 @@
 # generator-marcelle
 
-[![NPM version][npm-image]][npm-url]
+[![npm version](https://img.shields.io/npm/v/generator-marcelle)](https://www.npmjs.com/package/@marcellejs/core)
+![Status](https://img.shields.io/badge/status-active-success.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 > A Yeoman generator for Marcelle applications
 
@@ -34,7 +36,7 @@ yo marcelle:module
 Just enter your module's name (e.g. my-module) and the generator will create a template module that you can your in your script:
 
 ```js
-import { myModule } from './modules/my-module';
+import { myModule } from './modules';
 
 const m = myModule(opts);
 ```
@@ -53,22 +55,9 @@ To run the server:
 npm run backend
 ```
 
-TODO: document configuration
+> TODO: document configuration
 
-## Getting To Know Yeoman
+## ✍️ Authors
 
-- Yeoman has a heart of gold.
-- Yeoman is a person with feelings and opinions, but is very easy to work with.
-- Yeoman can be too opinionated at times but is easily convinced not to be.
-- Feel free to [learn more about Yeoman](http://yeoman.io/).
-
-## License
-
-MIT © [Jules Françoise]()
-
-[npm-image]: https://badge.fury.io/js/generator-marcelle.svg
-[npm-url]: https://npmjs.org/package/generator-marcelle
-[travis-image]: https://travis-ci.com/JulesFrancoise/generator-marcelle.svg?branch=master
-[travis-url]: https://travis-ci.com/JulesFrancoise/generator-marcelle
-[daviddm-image]: https://david-dm.org/JulesFrancoise/generator-marcelle.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/JulesFrancoise/generator-marcelle
+- [@JulesFrancoise](https://github.com/JulesFrancoise/)
+- [@bcaramiaux](https://github.com/bcaramiaux/)
