@@ -1,0 +1,6 @@
+.vscode
+node_modules
+.editorconfig
+.eslintignore
+.eslintrc.js
+.prettierrc.js
