@@ -9,12 +9,16 @@ module.exports = class extends Generator {
     this.generatorPkg = this.fs.readJSON(path.join(__dirname, '..', 'package.json'));
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
+    const isMarcelleCore = this.pkg.name === '@marcellejs/core';
+    const isApp =
+      this.pkg.keywords.includes('marcelle') &&
+      !this.pkg.keywords.includes('marcelle-package') &&
+      !isMarcelleCore;
+
     this.props = {
       lang: this.fs.exists(this.destinationPath('tsconfig.json')) ? 'ts' : 'js',
-      isApp:
-        this.pkg.keywords.includes('marcelle') &&
-        !this.pkg.keywords.includes('marcelle-package') &&
-        this.pkg.name !== '@marcellejs/core',
+      isMarcelleCore,
+      isApp,
     };
   }
 
@@ -60,6 +64,7 @@ module.exports = class extends Generator {
 
   writing() {
     const { lang } = this.props;
+    console.log('this.props', this.props);
     this.fs.copyTpl(
       this.templatePath(`${lang}/index.${lang}`),
       this.destinationPath(`src/modules/${this.props.kebabName}/index.${lang}`),

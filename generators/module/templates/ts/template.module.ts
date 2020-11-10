@@ -1,4 +1,4 @@
-import { Module } from '@marcellejs/core';
+import { Module } from '<% if (!isMarcelleCore) { %>@marcellejs/core<% } else { %>../../core<% } %>';
 import Component from './<%= kebabName %>.svelte';
 
 export interface <%= className %>Options {

@@ -1,5 +1,5 @@
 <script>
-  import { ModuleBase } from '@marcellejs/core';
+  import { ModuleBase } from '<% if (!isMarcelleCore) { %>@marcellejs/core<% } else { %>../../core<% } %>';
 
   export let title;
   export let options;
