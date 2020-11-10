@@ -3,7 +3,6 @@
   "port": 3030,
   "public": "../public/",
   "database": "<%= db %>",
-  "services": ["instances"],
   "enableAuth": <%= auth %>,
   "nedb": "../data",
   "mongodb": "mongodb://localhost:27017/marcelle_backend",
