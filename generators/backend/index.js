@@ -69,12 +69,12 @@ module.exports = class extends Generator {
   writing() {
     const pkg = {
       ...this.pkg,
-      scripts: { ...this.pkg.scripts, backend: 'node backend' },
-      dependencies: { ...this.pkg.dependencies, '@marcellejs/backend': '^0.0.1-alpha.0' },
+      scripts: {
+        ...this.pkg.scripts,
+        backend: 'marcelle-backend',
+      },
+      dependencies: { ...this.pkg.dependencies, '@marcellejs/backend': '^0.0.1-alpha.1' },
     };
-    this.conflicter.force = true;
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    this.fs.copy(this.templatePath('index.js'), this.destinationPath('backend/index.js'));
     this.fs.copy(this.templatePath('config'), this.destinationPath('backend/config'));
     this.fs.copyTpl(
       this.templatePath('config/default.json'),
@@ -85,6 +85,8 @@ module.exports = class extends Generator {
         auth: this.props.auth.toString(),
       },
     );
+    this.conflicter.force = true;
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
   install() {
@@ -98,11 +100,11 @@ module.exports = class extends Generator {
 
   end() {
     this.log
-      .writeln('\n---------------------------------------------------------------------------\n')
+      .writeln()
       .info('You will need to update the backends in your scripts:\n')
       .writeln(
         `const backend = createBackend({ location: 'http://localhost:3030/', auth: ${this.props.auth} });`,
       )
-      .writeln('\n---------------------------------------------------------------------------\n');
+      .writeln();
   }
 };

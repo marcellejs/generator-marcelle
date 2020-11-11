@@ -1,9 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
-  "public": "../public/",
   "database": "<%= db %>",
-  "enableAuth": <%= auth %>,
   "nedb": "../data",
   "mongodb": "mongodb://localhost:27017/marcelle_backend",
   "paginate": {
@@ -11,6 +9,7 @@
     "max": 50
   },
   "authentication": {
+    "enabled": <%= auth %>,
     "entity": "user",
     "service": "users",
     "secret": "<%= secret %>",
