@@ -1,6 +1,6 @@
 {
   "name": "generator-marcelle",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A Yeoman generator for Marcelle applications",
   "homepage": "https://github.com/marcellejs/generator-marcelle",
   "author": {
@@ -8,9 +8,10 @@
     "email": "me@julesfrancoise.com"
   },
   "files": [
-    "generators"
+    "generators",
+    "meta.js"
   ],
-  "main": "generators/index.js",
+  "main": "generators/app/index.js",
   "keywords": [
     "marcelle",
     "interactive machine learning",
