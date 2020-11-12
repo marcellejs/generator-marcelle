@@ -1,6 +1,6 @@
 # generator-marcelle
 
-[![npm version](https://img.shields.io/npm/v/generator-marcelle)](https://www.npmjs.com/package/@marcellejs/core)
+[![npm version](https://img.shields.io/npm/v/generator-marcelle)](https://www.npmjs.com/package/generator-marcelle)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
