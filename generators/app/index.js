@@ -122,10 +122,6 @@ module.exports = class extends Generator {
         this.destinationPath('', '.eslintrc.js'),
         context,
       );
-      this.fs.copy(
-        this.templatePath('_vscode-settings.json'),
-        this.destinationPath('', '.vscode/settings.json'),
-      );
     }
 
     if (this.props.linting.includes('prettier')) {
