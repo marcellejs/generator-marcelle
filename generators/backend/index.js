@@ -101,10 +101,13 @@ module.exports = class extends Generator {
   end() {
     this.log
       .writeln()
-      .info('You will need to update the backends in your scripts:\n')
-      .writeln(
-        `const backend = createBackend({ location: 'http://localhost:3030/', auth: ${this.props.auth} });`,
-      )
+      .info('Your backend is now ready. To run the server:\n')
+      .writeln(`\t\t${this.props.useYarn ? 'yarn' : 'npm run'} backend`);
+    if (this.props.isSub) return;
+    this.log
+      .writeln()
+      .info('You will need to update your scripts:\n')
+      .writeln(`const backend = createBackend({ location: 'http://localhost:3030/' });`)
       .writeln();
   }
 };

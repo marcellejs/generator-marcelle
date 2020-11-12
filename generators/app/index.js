@@ -106,6 +106,11 @@ module.exports = class extends Generator {
     const context = Object.assign({}, this.props, { isTypeScript, eslint, prettier });
 
     this.fs.copy(this.templatePath(`src_${lang}`), this.destinationPath('src'));
+    this.fs.copyTpl(
+      this.templatePath(`src_${lang}/index.${lang}`),
+      this.destinationPath(`src/index.${lang}`),
+      context,
+    );
     this.fs.writeJSON(this.destinationPath('package.json'), this.pkg);
 
     if (isTypeScript) {
@@ -165,5 +170,12 @@ module.exports = class extends Generator {
       npm: this.props.packager === 'npm',
       bower: false,
     });
+  }
+
+  end() {
+    this.log
+      .writeln('\n------\n')
+      .info('Your project is now ready. To run the application in development mode:\n')
+      .writeln(`\t${this.props.packager === 'yarn' ? 'yarn' : 'npm run'} dev`);
   }
 };
