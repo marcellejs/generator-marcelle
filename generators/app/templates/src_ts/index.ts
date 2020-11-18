@@ -9,7 +9,7 @@ import {
   progress,
   toggle,
   mlp,
-  createBackend,
+  dataStore,
   dashboard,
   textfield,
   trainingPlot,
@@ -46,8 +46,8 @@ const instances = input.$images
   }))
   .awaitPromises();
 
-const backend = createBackend({ location: <% if (backend === 'browser') { %>'localStorage'<% } else { %>'http://localhost:3030'<% } %> });
-const trainingSet = dataset({ name: 'TrainingSet', backend });
+const store = dataStore({ location: <% if (backend === 'browser') { %>'localStorage'<% } else { %>'http://localhost:3030'<% } %> });
+const trainingSet = dataset({ name: 'TrainingSet', dataStore: store });
 trainingSet.capture(instances as Stream<Instance>);
 
 const trainingSetBrowser = browser(trainingSet);
@@ -70,7 +70,7 @@ const plotTraining = trainingPlot(classifier);
 // BATCH PREDICTION
 // -----------------------------------------------------------
 
-const batchMLP = batchPrediction({ name: 'mlp', backend });
+const batchMLP = batchPrediction({ name: 'mlp', dataStore: store });
 const confusionMatrix = confusion(batchMLP);
 
 const predictButton = button({ text: 'Update predictions' });
@@ -96,18 +96,18 @@ const plotResults = predictionPlot(predictionStream as Stream<Prediction>);
 // DASHBOARDS
 // -----------------------------------------------------------
 
-const dashboard = dashboard({
+const dash = dashboard({
   title: 'Marcelle Example - Dashboard',
   author: 'Marcelle Pirates Crew',
 });
 
-dashboard
+dash
   .page('Data Management')
   .useLeft(input, featureExtractor)
   .use([label, capture], trainingSetInfo, trainingSetBrowser);
-dashboard.page('Training').use(params, b, prog, plotTraining);
-dashboard.page('Batch Prediction').use(predictButton, confusionMatrix);
-dashboard.page('Real-time Prediction').useLeft(input).use(tog, plotResults);
-dashboard.settings.useLeft(account(backend)).use(trainingSet);
+dash.page('Training').use(params, b, prog, plotTraining);
+dash.page('Batch Prediction').use(predictButton, confusionMatrix);
+dash.page('Real-time Prediction').useLeft(input).use(tog, plotResults);
+dash.settings.useLeft(account(store)).use(trainingSet);
 
-dashboard.start();
+dash.start();
