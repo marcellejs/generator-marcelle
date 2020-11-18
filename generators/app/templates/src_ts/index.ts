@@ -10,7 +10,7 @@ import {
   toggle,
   mlp,
   createBackend,
-  createDashboard,
+  dashboard,
   textfield,
   trainingPlot,
   batchPrediction,
@@ -96,7 +96,7 @@ const plotResults = predictionPlot(predictionStream as Stream<Prediction>);
 // DASHBOARDS
 // -----------------------------------------------------------
 
-const dashboard = createDashboard({
+const dashboard = dashboard({
   title: 'Marcelle Example - Dashboard',
   author: 'Marcelle Pirates Crew',
 });
