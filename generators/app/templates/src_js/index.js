@@ -1,110 +1,13 @@
 import '@marcellejs/core/dist/bundle.css';
-import {
-  browser,
-  webcam,
-  mobilenet,
-  dataset,
-  button,
-  parameters,
-  progress,
-  toggle,
-  mlp,
-  dataStore,
-  dashboard,
-  textfield,
-  trainingPlot,
-  batchPrediction,
-  confusion,
-  predictionPlot,
-  account,
-} from '@marcellejs/core';
-import { datasetInfo } from './modules';
+import { dashboard, text } from '@marcellejs/core';
 
-// -----------------------------------------------------------
-// INPUT PIPELINE & DATA CAPTURE
-// -----------------------------------------------------------
-
-const input = webcam();
-const featureExtractor = mobilenet();
-
-const label = textfield();
-label.name = 'Instance label';
-const capture = button({ text: 'Hold to record instances' });
-capture.name = 'Capture instances to the training set';
-
-const instances = input.$images
-  .filter(() => capture.$down.value)
-  .map(async img => ({
-    type: 'image',
-    data: img,
-    label: label.$text.value,
-    thumbnail: input.$thumbnails.value,
-    features: await featureExtractor.process(img),
-  }))
-  .awaitPromises();
-
-const store = dataStore({ location: <% if (backend === 'browser') { %>'localStorage'<% } else { %>'http://localhost:3030'<% } %> });
-const trainingSet = dataset({ name: 'TrainingSet', dataStore: store });
-trainingSet.capture(instances);
-
-const trainingSetBrowser = browser(trainingSet);
-const trainingSetInfo = datasetInfo(trainingSet);
-
-// -----------------------------------------------------------
-// TRAINING
-// -----------------------------------------------------------
-
-const b = button({ text: 'Train' });
-b.name = 'Training Launcher';
-const classifier = mlp({ layers: [64, 32], epochs: 20 });
-b.$click.subscribe(() => classifier.train(trainingSet));
-
-const params = parameters(classifier);
-const prog = progress(classifier);
-const plotTraining = trainingPlot(classifier);
-
-// -----------------------------------------------------------
-// BATCH PREDICTION
-// -----------------------------------------------------------
-
-const batchMLP = batchPrediction({ name: 'mlp', dataStore: store });
-const confusionMatrix = confusion(batchMLP);
-
-const predictButton = button({ text: 'Update predictions' });
-predictButton.$click.subscribe(async () => {
-  await batchMLP.clear();
-  await batchMLP.predict(classifier, trainingSet);
-});
-
-// -----------------------------------------------------------
-// REAL-TIME PREDICTION
-// -----------------------------------------------------------
-
-const tog = toggle({ text: 'toggle prediction' });
-
-const predictionStream = input.$images
-  .filter(() => tog.$checked.value)
-  .map(async img => classifier.predict(await featureExtractor.process(img)))
-  .awaitPromises();
-
-const plotResults = predictionPlot(predictionStream);
-
-// -----------------------------------------------------------
-// DASHBOARDS
-// -----------------------------------------------------------
+const x = text({ text: 'Welcome to Marcelle!' });
 
 const dash = dashboard({
-  title: 'Marcelle Example - Dashboard',
-  author: 'Marcelle Pirates Crew',
+  title: 'My Marcelle App!',
+  author: 'Marcelle Doe',
 });
 
-dash
-  .page('Data Management')
-  .useLeft(input, featureExtractor)
-  .use([label, capture], trainingSetInfo, trainingSetBrowser);
-dash.page('Training').use(params, b, prog, plotTraining);
-dash.page('Batch Prediction').use(predictButton, confusionMatrix);
-dash.page('Real-time Prediction').useLeft(input).use(tog, plotResults);
-dash.settings.useLeft(account(store)).use(trainingSet);
+dash.page('Welcome').use(x);
 
 dash.start();

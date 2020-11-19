@@ -107,7 +107,7 @@ module.exports = class extends Generator {
     this.log
       .writeln()
       .info('You will need to update your scripts:\n')
-      .writeln(`const backend = createBackend({ location: 'http://localhost:3030/' });`)
+      .writeln(`const store = dataStore({ location: 'http://localhost:3030/' });`)
       .writeln();
   }
 };
