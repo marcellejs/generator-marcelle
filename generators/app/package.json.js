@@ -44,7 +44,7 @@ module.exports = function makePkgConfig(generator) {
   const { props } = generator;
   const ts = props.language === 'ts';
 
-  const dependencies = { '@marcellejs/core': '^0.1.0-alpha.3' };
+  const dependencies = { '@marcellejs/core': '^0.1.0-alpha.4' };
   const devDependencies = {};
   let scripts = {};
   if (props.linting.includes('eslint')) {
