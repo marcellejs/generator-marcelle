@@ -1,4 +1,4 @@
-import '@marcellejs/core/dist/bundle.css';
+import '@marcellejs/core/dist/marcelle.css';
 import { dashboard, text } from '@marcellejs/core';
 
 const x = text({ text: 'Welcome to Marcelle!' });

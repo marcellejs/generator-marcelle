@@ -102,11 +102,12 @@ module.exports = class extends Generator {
     this.log
       .writeln()
       .info('Your backend is now ready. To run the server:\n')
-      .writeln(`\t\t${this.props.useYarn ? 'yarn' : 'npm run'} backend`);
-    if (this.props.isSub) return;
+      .writeln(`\t${this.props.useYarn ? 'yarn' : 'npm run'} backend`);
     this.log
       .writeln()
-      .info('You will need to update your scripts:\n')
+      .info(
+        "The backend will run locally at 'http://localhost:3030/', use it as location for your data stores:\n",
+      )
       .writeln(`const store = dataStore({ location: 'http://localhost:3030/' });`)
       .writeln();
   }

@@ -3,6 +3,7 @@
   "port": 3030,
   "database": "<%= db %>",
   "nedb": "../data",
+  "uploads": "../uploads",
   "mongodb": "mongodb://localhost:27017/marcelle_backend",
   "paginate": {
     "default": 10,
