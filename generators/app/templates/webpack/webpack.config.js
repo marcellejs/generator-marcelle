@@ -20,9 +20,6 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
   },
-  externals: {
-    'chart.js': 'Chart',
-  },
   module: {
     rules: [
       <% if (isTypeScript) { %>{
