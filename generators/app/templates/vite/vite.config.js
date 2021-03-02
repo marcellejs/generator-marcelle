@@ -1,22 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { svelte } from 'vite-plugin-svelte';
+import svelte from 'rollup-plugin-svelte';
+import { resolve } from 'path';
 
 export default {
-  port: 8080,
-  plugins: [
-    // These options are optional, you don't have to configure them manually,
-    // for the most part.
-    svelte({
-      // Svelte compiler options
-      compilerOptions: {},
-      // Svelte HMR options, pass false to disable
-      hmrOptions: {},
-      // Svelte preprocessors
-      preprocess: [],
-      // Plugin options
-      pluginsOptions: {},
-    }),
-  ],
+  plugins: [svelte({ emitCss: false })],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        // other: resolve(__dirname, 'other-page/index.html'),
+      },
+    },
+  },
   optimizeDeps: {
     exclude: ['@marcellejs/backend'],
   },

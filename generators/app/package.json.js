@@ -16,8 +16,8 @@ const webpackDevDependencies = ts =>
     ts ? { typescript: '^4.0.5', 'ts-loader': '^8.0.9' } : {},
   );
 
-const viteDependencies = { svelte: '^3.29.4' };
-const viteDevDependencies = { vite: '^1.0.0-rc.9', 'vite-plugin-svelte': '^3.0.1' };
+const viteDependencies = { svelte: '^3.35.0' };
+const viteDevDependencies = { vite: '^2.0.4', 'rollup-plugin-svelte': '^7.1.0' };
 
 const eslintDevDependencies = (ts, prettier) =>
   Object.assign(
