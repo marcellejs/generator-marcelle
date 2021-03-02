@@ -1,4 +1,8 @@
 {
-  "host": "marcelle-backend-app.com",
-  "port": "PORT"
+  "host": "marcelle-backend.com",
+  "port": "PORT",
+  "mongodb": "MONGODB_URL",
+  "authentication": {
+    "secret": "AUTH_SECRET"
+  }
 }

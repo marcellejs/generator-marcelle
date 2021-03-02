@@ -3,8 +3,9 @@
   "port": 3030,
   "database": "<%= db %>",
   "nedb": "../data",
+  "mongodb": "mongodb://localhost:27017/marcelle_<%= name %>",
   "uploads": "../uploads",
-  "mongodb": "mongodb://localhost:27017/marcelle_backend",
+  "assetTypes": ["jpg", "jpeg", "png", "wav"],
   "paginate": {
     "default": 10,
     "max": 50

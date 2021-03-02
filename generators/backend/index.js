@@ -1,5 +1,5 @@
 const Generator = require('yeoman-generator');
-const { isEmpty } = require('lodash');
+const { isEmpty, snakeCase } = require('lodash');
 const crypto = require('crypto');
 
 module.exports = class extends Generator {
@@ -83,6 +83,7 @@ module.exports = class extends Generator {
         secret: crypto.randomBytes(20).toString('base64'),
         db: this.props.db,
         auth: this.props.auth.toString(),
+        name: snakeCase(this.pkg.name),
       },
     );
     this.conflicter.force = true;
@@ -108,7 +109,7 @@ module.exports = class extends Generator {
       .info(
         "The backend will run locally at 'http://localhost:3030/', use it as location for your data stores:\n",
       )
-      .writeln(`const store = dataStore({ location: 'http://localhost:3030/' });`)
+      .writeln(`\tconst store = dataStore({ location: 'http://localhost:3030/' });`)
       .writeln();
   }
 };
