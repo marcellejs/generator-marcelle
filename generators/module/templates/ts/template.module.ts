@@ -6,8 +6,7 @@ export interface <%= className %>Options {
 }
 
 export class <%= className %> extends Module {
-  name = '<%= kebabName %> [custom module 🤖]';
-  description = 'TODO: <%= className %> description';
+  title = '<%= kebabName %> [custom module 🤖]';
 
   options: <%= className %>Options;
 
@@ -16,14 +15,14 @@ export class <%= className %> extends Module {
     this.options = options;
   }
 
-  mount(targetSelector?: string): void {
-    const target = document.querySelector(targetSelector || `#${this.id}`);
-    if (!target) return;
+  mount(target?: HTMLElement): void {
+    const t = target || document.querySelector(`#${this.id}`);
+    if (!t) return;
     this.destroy();
     this.$$.app = new Component({
-      target,
+      target: t,
       props: {
-        title: this.name,
+        title: this.title,
         options: this.options,
       },
     });

@@ -4,19 +4,18 @@ import Component from './<%= kebabName %>.svelte';
 export class <%= className %> extends Module {
   constructor(options) {
     super();
-    this.name = '<%= kebabName %> [custom module 🤖]';
-    this.description = 'TODO: <%= className %> description';
+    this.title = '<%= kebabName %> [custom module 🤖]';
     this.options = options;
   }
 
-  mount(targetSelector) {
-    const target = document.querySelector(targetSelector || `#${this.id}`);
-    if (!target) return;
+  mount(target) {
+    const t = target || document.querySelector(`#${this.id}`);
+    if (!t) return;
     this.destroy();
     this.$$.app = new Component({
-      target,
+      target: t,
       props: {
-        title: this.name,
+        title: this.title,
         options: this.options,
       },
     });
