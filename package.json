@@ -1,6 +1,6 @@
 {
   "name": "generator-marcelle",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Yeoman generator for Marcelle applications",
   "homepage": "https://github.com/marcellejs/generator-marcelle",
   "author": {
