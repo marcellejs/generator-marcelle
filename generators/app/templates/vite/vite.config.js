@@ -1,5 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import svelte from 'rollup-plugin-svelte';
+/* eslint-env node */
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { resolve } from 'path';
 
 export default {

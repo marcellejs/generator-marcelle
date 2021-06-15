@@ -73,7 +73,7 @@ module.exports = class extends Generator {
         ...this.pkg.scripts,
         backend: 'marcelle-backend',
       },
-      dependencies: { ...this.pkg.dependencies, '@marcellejs/backend': '^0.0.2' },
+      dependencies: { ...this.pkg.dependencies, '@marcellejs/backend': '^0.0.4' },
     };
     this.fs.copy(this.templatePath('config'), this.destinationPath('backend/config'));
     this.fs.copyTpl(

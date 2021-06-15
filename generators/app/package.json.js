@@ -16,26 +16,28 @@ const webpackDevDependencies = ts =>
     ts ? { typescript: '^4.0.5', 'ts-loader': '^8.0.9' } : {},
   );
 
-const viteDependencies = { svelte: '^3.35.0' };
-const viteDevDependencies = { vite: '^2.0.4', 'rollup-plugin-svelte': '^7.1.0' };
+const viteDependencies = { svelte: '^3.38.2' };
+const viteDevDependencies = { vite: '^2.3.7', '@sveltejs/vite-plugin-svelte': '^1.0.0-next.11' };
 
 const eslintDevDependencies = (ts, prettier) =>
   Object.assign(
     {},
     {
-      eslint: '^7.12.1',
-      'eslint-plugin-import': '^2.22.1',
-      'eslint-plugin-svelte3': '^2.7.3',
+      eslint: '^7.28.0',
+      'eslint-plugin-import': '^2.23.4',
+      'eslint-plugin-svelte3': '^3.2.0',
     },
     ts
       ? {
-          '@typescript-eslint/eslint-plugin': '^4.6.0',
-          'eslint-config-airbnb-typescript': '^12.0.0',
+          '@typescript-eslint/eslint-plugin': '^4.22.1',
+          '@typescript-eslint/parser': '^4.22.1',
         }
-      : { 'eslint-config-airbnb-base': '^14.2.0', 'eslint-config-prettier': '^6.15.0' },
+      : {},
     prettier
       ? {
-          'eslint-config-prettier': '^6.15.0',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^3.4.0',
+          prettier: '^2.2.0',
         }
       : {},
   );
@@ -44,11 +46,11 @@ module.exports = function makePkgConfig(generator) {
   const { props } = generator;
   const ts = props.language === 'ts';
 
-  const dependencies = { '@marcellejs/core': '^0.2.0' };
+  const dependencies = { '@marcellejs/core': '^0.4.0' };
   const devDependencies = {};
   let scripts = {};
   if (props.linting.includes('eslint')) {
-    Object.assign(devDependencies, eslintDevDependencies(ts));
+    Object.assign(devDependencies, eslintDevDependencies(ts, props.linting.includes('prettier')));
   }
   if (props.buildTool === 'vite') {
     scripts = {

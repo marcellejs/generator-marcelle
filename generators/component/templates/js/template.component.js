@@ -1,7 +1,7 @@
-import { Module } from '<% if (!isMarcelleCore) { %>@marcellejs/core<% } else { %>../../core<% } %>';
-import Component from './<%= kebabName %>.svelte';
+import { Component } from '<% if (!isMarcelleCore) { %>@marcellejs/core<% } else { %>../../core<% } %>';
+import View from './<%= kebabName %>.view.svelte';
 
-export class <%= className %> extends Module {
+export class <%= className %> extends Component {
   constructor(options) {
     super();
     this.title = '<%= kebabName %> [custom module 🤖]';
@@ -12,7 +12,7 @@ export class <%= className %> extends Module {
     const t = target || document.querySelector(`#${this.id}`);
     if (!t) return;
     this.destroy();
-    this.$$.app = new Component({
+    this.$$.app = new View({
       target: t,
       props: {
         title: this.title,

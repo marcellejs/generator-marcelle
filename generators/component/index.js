@@ -39,7 +39,7 @@ module.exports = class extends Generator {
     const prompts = [
       {
         name: 'name',
-        message: 'What is the name of the module?',
+        message: 'What is the name of the component?',
         validate(input) {
           switch (input.trim()) {
             case '':
@@ -66,24 +66,26 @@ module.exports = class extends Generator {
     const { lang } = this.props;
     this.fs.copyTpl(
       this.templatePath(`${lang}/index.${lang}`),
-      this.destinationPath(`src/modules/${this.props.kebabName}/index.${lang}`),
+      this.destinationPath(`src/components/${this.props.kebabName}/index.${lang}`),
       this.props,
     );
     this.fs.copyTpl(
-      this.templatePath(`${lang}/template.module.${lang}`),
+      this.templatePath(`${lang}/template.component.${lang}`),
       this.destinationPath(
-        `src/modules/${this.props.kebabName}/${this.props.kebabName}.module.${lang}`,
+        `src/components/${this.props.kebabName}/${this.props.kebabName}.component.${lang}`,
       ),
       this.props,
     );
     this.fs.copyTpl(
-      this.templatePath(`${lang}/template.svelte`),
-      this.destinationPath(`src/modules/${this.props.kebabName}/${this.props.kebabName}.svelte`),
+      this.templatePath(`${lang}/template.view.svelte`),
+      this.destinationPath(
+        `src/components/${this.props.kebabName}/${this.props.kebabName}.view.svelte`,
+      ),
       this.props,
     );
     this.conflicter.force = true;
     this.fs.append(
-      this.destinationPath(`src/modules/index.${lang}`),
+      this.destinationPath(`src/components/index.${lang}`),
       `export * from './${this.props.kebabName}';\n`,
     );
   }

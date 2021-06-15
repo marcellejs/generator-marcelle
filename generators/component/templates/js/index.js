@@ -1,4 +1,4 @@
-import { <%= className %> } from './<%= kebabName %>.module';
+import { <%= className %> } from './<%= kebabName %>.component';
 
 export function <%= camelName %>(options) {
   return new <%= className %>(options);

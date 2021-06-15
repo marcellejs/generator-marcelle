@@ -10,4 +10,4 @@ const dash = dashboard({
 
 dash.page('Welcome').use(x);
 
-dash.start();
+dash.show();

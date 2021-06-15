@@ -65,7 +65,7 @@ module.exports = class extends Generator {
         type: 'checkbox',
         message: 'Linting and Formatting',
         choices: [
-          { name: 'ESLint (airbnb)', value: 'eslint', checked: true },
+          { name: 'ESLint', value: 'eslint', checked: true },
           { name: 'Prettier', value: 'prettier', checked: true },
           { name: 'None', value: 'none' },
         ],
