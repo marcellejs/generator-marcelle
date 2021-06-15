@@ -25,20 +25,20 @@ yo marcelle
 
 Several options are available to customize the project. If you don't know what to chose, just hit enter to select the defaults.
 
-## Generating a Module
+## Generating a Component
 
-It is possible to use the generator to create new custom modules for an application or a marcelle package.
+It is possible to use the generator to create new custom components for an application or a marcelle package.
 
 ```bash
-yo marcelle:module
+yo marcelle:component
 ```
 
-Just enter your module's name (e.g. my-module) and the generator will create a template module that you can your in your script:
+Just enter your component's name (e.g. my-component) and the generator will create a template component that you can your in your script:
 
 ```js
-import { myModule } from './modules';
+import { myComponent } from './components';
 
-const m = myModule(opts);
+const m = myComponent(opts);
 ```
 
 ## Generating a Backend
@@ -54,8 +54,6 @@ To run the server:
 ```bash
 npm run backend
 ```
-
-> TODO: document configuration
 
 ## ✍️ Authors
 
