@@ -4,7 +4,7 @@ import View from './<%= kebabName %>.view.svelte';
 export class <%= className %> extends Component {
   constructor(options) {
     super();
-    this.title = '<%= kebabName %> [custom module 🤖]';
+    this.title = '<%= kebabName %> [custom component 🤖]';
     this.options = options;
   }
 

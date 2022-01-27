@@ -6,7 +6,7 @@ export interface <%= className %>Options {
 }
 
 export class <%= className %> extends Component {
-  title = '<%= kebabName %> [custom module 🤖]';
+  title = '<%= kebabName %> [custom component 🤖]';
 
   options: <%= className %>Options;
 

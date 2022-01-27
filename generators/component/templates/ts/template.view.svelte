@@ -1,5 +1,3 @@
-<svelte:options accessors />
-
 <script>
   import { ViewContainer } from '<% if (!isMarcelleCore) { %>@marcellejs/core<% } else { %>../../core<% } %>';
 
@@ -8,7 +6,7 @@
 </script>
 
 <ViewContainer {title}>
-  <div>This is a <span class="my-color">custom</span> module with the following options:</div>
+  <div>This is a <span class="my-color">custom</span> component with the following options:</div>
   <p>{JSON.stringify(options)}</p>
 </ViewContainer>
 
